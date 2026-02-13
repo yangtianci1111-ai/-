@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>马赛华人教会 · 教会网站</title>
-    <!-- 保留现代风格，同时带有神圣静默的氛围 -->
+    <title>马赛海岸之光 · 华人天主教团体</title>
     <style>
+        /* 神圣而宁静的色调——借鉴地中海岸的蓝与白 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'system-ui', -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
-
         body {
-            background-color: #faf7f2; /* 柔和米白 */
-            color: #2e3b2c; /* 深橄榄绿，稳重 */
+            background-color: #f5f2eb;  /* 温暖沙色基底 */
+            color: #2c3e2c;
             line-height: 1.6;
         }
-
+        /* 双语切换按钮 */
         .lang-toggle {
             position: fixed;
             top: 20px;
@@ -29,13 +28,12 @@
             border-radius: 40px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(8px);
-            border: 1px solid #d6cfb4;
+            border: 1px solid #cbd5e0;
             display: flex;
             gap: 12px;
             font-size: 1rem;
             font-weight: 500;
         }
-
         .lang-btn {
             background: none;
             border: none;
@@ -43,313 +41,294 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.2s;
-            color: #5a6e4a;
+            color: #2c5f2d;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
-
         .lang-btn.active {
-            background: #b7b5a5; /* 十字架亚麻色 */
+            background: #6b8e9b; /* 地中海蓝 */
             color: white;
         }
-
         .lang-btn:hover {
-            background: #d2cdb6;
-            color: #2a382a;
+            background: #9fb7c5;
+            color: #1e3a2a;
         }
-
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 40px 30px;
         }
-
-        /* 头部与Logo区域 */
+        /* 头部区域 带有海岸气息 */
         header {
             text-align: center;
-            padding: 50px 0 20px;
-            border-bottom: 2px solid #dad3c0;
-            margin-bottom: 40px;
+            padding: 40px 0 20px;
+            border-bottom: 3px solid #b0c4ce;
+            margin-bottom: 30px;
             position: relative;
         }
-
         .church-name {
             font-size: 3rem;
             font-weight: 400;
-            letter-spacing: 6px;
-            color: #4a5c44;
-            text-transform: uppercase;
-            font-family: 'Times New Roman', 'Songti SC', serif;
+            letter-spacing: 4px;
+            color: #1e4a5f;
+            font-family: 'Times New Roman', 'Georgia', serif;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.02);
         }
-
         .subhead {
-            font-size: 1.4rem;
-            color: #857f6b;
-            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #5d7a7c;
+            margin-top: 8px;
             font-style: italic;
             font-weight: 300;
         }
-
         .cross {
-            font-size: 3rem;
-            color: #a79e87;
+            font-size: 3.5rem;
+            color: #ae8f6f;
             margin-bottom: 10px;
         }
-
-        /* 双语内容块 —— 默认隐藏法语，显示中文 */
+        /* 双语控制 (重用之前稳定逻辑) */
         .lang-fr {
             display: none;
         }
-
         body.show-fr .lang-zh {
             display: none;
         }
-
         body.show-fr .lang-fr {
             display: inline;
         }
-
         body.show-fr .lang-fr-block {
             display: block;
         }
-
         body.show-fr .lang-zh-block {
             display: none;
         }
-
-        /* 保证切换时块级正常 */
         .lang-zh-block, .lang-fr-block {
             display: block;
         }
-
         .lang-mixed {
             display: inline;
         }
-
-        /* 导航卡片式网格 */
+        /* 卡片与网格 */
         .grid-2, .grid-3 {
             display: grid;
             gap: 30px;
-            margin-top: 30px;
-            margin-bottom: 50px;
+            margin: 30px 0;
         }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
         @media (max-width: 780px) {
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .church-name {
-                font-size: 2.2rem;
-            }
-            .lang-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 4px 8px;
-            }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .church-name { font-size: 2.3rem; }
+            .lang-toggle { top: 10px; right: 10px; }
         }
-
         .card {
             background: white;
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 30px 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-            border: 1px solid #ede8da;
-            transition: transform 0.15s ease, box-shadow 0.2s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+            border: 1px solid #e2decf;
+            transition: transform 0.2s;
         }
-
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(96, 85, 66, 0.05);
-            border-color: #cdc6ae;
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px rgba(0,0,0,0.05);
+            border-color: #b7aa8f;
         }
-
         .card-title {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 350;
-            border-bottom: 2px solid #e4dfd0;
+            border-bottom: 2px solid #d4cfbc;
             padding-bottom: 15px;
             margin-bottom: 20px;
-            color: #4f6046;
+            color: #2b5e6b;
             font-family: 'Georgia', serif;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
-
-        .card-title i {
-            font-size: 1.8rem;
-        }
-
         .verse {
-            background: #f3f0e8;
+            background: #eef1ea;
             padding: 20px 25px;
-            border-radius: 20px;
+            border-radius: 24px;
             margin: 35px 0;
-            border-left: 8px solid #b1ad94;
+            border-left: 8px solid #a2b9c2;
             font-style: italic;
-            color: #3e4d3a;
+            color: #2a4b3f;
             font-size: 1.2rem;
         }
-
-        .btn {
-            display: inline-block;
-            background: #6a7159;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-top: 15px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
+        /* 图像样式 */
+        .sacred-image {
+            width: 100%;
+            border-radius: 28px;
+            margin: 25px 0 15px;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+            border: 4px solid #fff8ec;
+            transition: transform 0.3s ease;
         }
-
-        .btn:hover {
-            background: #525a44;
+        .sacred-image:hover {
+            transform: scale(1.01);
         }
-
-        /* 聚会时间表 */
+        .image-row {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .image-item {
+            flex: 1 1 280px;
+            text-align: center;
+            background: #fffcf2;
+            border-radius: 32px;
+            padding: 20px 20px 15px;
+            border: 1px solid #dacdb9;
+        }
+        .image-item img {
+            width: 100%;
+            border-radius: 24px;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border: 3px solid #e6d7bd;
+        }
+        .image-caption {
+            margin-top: 12px;
+            font-size: 1.1rem;
+            color: #476b6f;
+            font-weight: 400;
+        }
+        /* 日程列表 */
         .schedule-list {
             list-style: none;
         }
-
         .schedule-list li {
             padding: 14px 0;
-            border-bottom: 1px dashed #ddd6c4;
+            border-bottom: 1px dashed #d9cfb8;
             display: flex;
             justify-content: space-between;
             font-size: 1.15rem;
         }
-
-        .day {
-            font-weight: 600;
-            color: #5b6e4b;
-        }
-
+        .day { font-weight: 600; color: #3d6b5e; }
         .footer {
             margin-top: 70px;
             padding: 40px 0 20px;
             text-align: center;
-            color: #7b826c;
-            border-top: 1px solid #ddd6c4;
-            font-size: 0.95rem;
+            color: #60756b;
+            border-top: 1px solid #d9cfb8;
         }
-
-        .address {
-            background: #efebe1;
-            padding: 20px;
-            border-radius: 20px;
-            margin-top: 20px;
+        .btn {
+            background: #6f8f8c;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
         }
-
-        .fr-italic {
-            font-style: italic;
-        }
-
-        /* 简化图标 */
-        .icon {
-            font-size: 1.7rem;
-        }
-
-        /* 保证法语显示完整 */
-        .small-note {
-            font-size: 0.9rem;
-            color: #767e68;
-            margin-top: 10px;
+        .btn:hover { background: #4e6b68; }
+        .small-note { font-size: 0.9rem; color: #776b5b; }
+        .icon { font-size: 1.8rem; }
+        /* 活动图标行 */
+        .activity-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 2rem;
+            margin: 20px 0 10px;
         }
     </style>
 </head>
 <body>
-    <!-- 双语切换按钮 — 固定右上角 -->
     <div class="lang-toggle">
         <button id="btn-zh" class="lang-btn active">🇨🇳 中文</button>
         <button id="btn-fr" class="lang-btn">🇫🇷 Français</button>
     </div>
 
     <div class="container">
-        <!-- 网站头部：十字架符号 + 中法双语名称 -->
         <header>
-            <div class="cross">✝</div>
-            <!-- 中文名称区块 (始终可见，但法语模式下通过替换显示隐藏，此处巧妙包装) -->
+            <div class="cross">⚓ ✠ ⚓</div>  <!-- 马赛海港与十字架 -->
             <h1 class="church-name">
-                <span class="lang-zh-block">马赛华人教会</span>
-                <span class="lang-fr-block" style="display: none;">Communauté Chinoise de Marseille</span>
+                <span class="lang-zh-block">马赛海岸之光</span>
+                <span class="lang-fr-block" style="display: none;">Lumière de la Côte de Marseille</span>
             </h1>
             <div class="subhead">
-                <span class="lang-zh-block"> · 信心 · 盼望 · 爱 · </span>
-                <span class="lang-fr-block" style="display: none;">✝ Foi · Espérance · Amour ✝</span>
+                <span class="lang-zh-block">· 华人天主教团体 · 共融 · 服务 · 祈祷 ·</span>
+                <span class="lang-fr-block" style="display: none;">✝ Communauté catholique chinoise · Communion · Service · Prière ✝</span>
             </div>
-            <!-- 简短双语介绍 -->
-            <p style="margin-top: 20px; color: #5e6b56; max-width: 700px; margin-left: auto; margin-right: auto;">
-                <span class="lang-zh-block">我们欢迎所有讲中文或法语的朋友，一同敬拜、团契、服侍。</span>
-                <span class="lang-fr-block" style="display: none;">Fondée en 1998, la Communauté Chinoise de Marseille est une fellowship dynamique en Provence. Nous accueillons tous ceux qui parlent chinois ou français pour adorer, partager et servir ensemble.</span>
+            <p style="max-width:750px; margin:20px auto 0; color:#4e6b64;">
+                <span class="lang-zh-block">马赛海岸之光华人天主教聚集说中文和法语的教友，共同祈祷、学习圣经、服务社区，活出福音的喜乐。</span>
+                <span class="lang-fr-block" style="display: none;">La Lumière de la Côte de Marseille est une communauté catholique chinoise, sous l'égide de l'archidiocèse de Marseille. Rassemblés autour du Christ et sous la protection de Marie, nous accueillons les fidèles francophones et sinophones pour la prière, l'étude biblique et le service communautaire, vivant la joie de l'Évangile.</span>
             </p>
         </header>
 
-        <!-- 核心经文 / 金句 双语显示 -->
-        <div class="verse">
-            <span style="font-size: 2rem; color: #8f9a7a;">“</span>
-            <span class="lang-zh-block">你们是世上的光。城造在山上是不能隐藏的。 — 马窦福音 5:14</span>
-            <span class="lang-fr-block" style="display: none;">« Vous êtes la lumière du monde. Une ville située sur une montagne ne peut être cachée. » — Matthieu 5:14</span>
-            <span style="font-size: 2rem; color: #8f9a7a;">”</span>
+        <!-- 核心图像：基督与圣母并排 (保留，但不特别强调) -->
+        <div class="image-row">
+            <div class="image-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Spas_vsederzhitel_sinay.jpg/1024px-Spas_vsederzhitel_sinay.jpg"
+                     alt="基督普世君王" loading="lazy">
+                <div class="image-caption lang-zh-block">✠ 基督 · 道路真理生命 ✠</div>
+                <div class="image-caption lang-fr-block" style="display: none;">✠ Le Christ, Chemin, Vérité et Vie ✠</div>
+            </div>
+            <div class="image-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Vladimirskaya.jpg/1024px-Vladimirskaya.jpg"
+                     alt="弗拉基米尔圣母" loading="lazy">
+                <div class="image-caption lang-zh-block">🕊️ 圣母 · 天主之母 🕊️</div>
+                <div class="image-caption lang-fr-block" style="display: none;">🕊️ Vierge Marie · Mère de Dieu 🕊️</div>
+            </div>
+            <!-- 第三幅图像：马赛守护圣母圣殿 -->
+            <div class="image-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Notre-Dame_de_la_Garde_(Marseille).jpg/1024px-Notre-Dame_de_la_Garde_(Marseille).jpg"
+                     alt="马赛守护圣母圣殿" loading="lazy">
+                <div class="image-caption lang-zh-block">⛵ 守护圣母 · 马赛地标 ⛵</div>
+                <div class="image-caption lang-fr-block" style="display: none;">⛵ Notre-Dame de la Garde ⛵</div>
+            </div>
         </div>
 
-        <!-- 信息网格 1 : 欢迎与信仰告白 (双语) -->
+        <!-- 金句 -->
+        <div class="verse">
+            <span style="font-size:2.5rem; color:#b58f6b;">⚓</span>
+            <span class="lang-zh-block">“你们是世上的光。城造在山上是不能隐藏的。” — 玛窦福音 5:14</span>
+            <span class="lang-fr-block" style="display: none;">« Vous êtes la lumière du monde. Une ville située sur une montagne ne peut être cachée. » — Matthieu 5:14</span>
+            <span style="font-size:2.5rem; color:#b58f6b;">⚓</span>
+        </div>
+
+        <!-- 团体使命与信仰 (简洁) -->
         <div class="grid-2">
             <div class="card">
-                <div class="card-title">
-                    <span class="icon">🕊️</span> 
-                    <span class="lang-zh-block">我们的使命</span>
-                    <span class="lang-fr-block" style="display: none;">Notre Mission</span>
-                </div>
+                <div class="card-title"><span class="icon">⛵</span> <span class="lang-zh-block">我们的使命</span><span class="lang-fr-block" style="display: none;">Notre Mission</span></div>
                 <div class="lang-zh-block">
-                    <p style="font-size: 1.1rem;">在法国马赛建立一座连结华人与法国友爱的桥梁，传扬基督的爱，栽培门徒，服务社群。</p>
+                    <p>在马赛成为华人教友的灯塔：以中文提供弥撒、要理、圣经分享，并推动与法国本地教会的共融。我们效法耶稣的慈悲，在团体生活中彼此扶持。</p>
+                    <p style="margin-top:20px;">✨ 每周日中文弥撒 · 要理课程 · 朝圣之旅 · 爱德服务</p>
                 </div>
                 <div class="lang-fr-block" style="display: none;">
-                    <p style="font-size: 1.1rem;">Bâtir un pont entre les Chinois et les amis français à Marseille, partager l'amour du Christ, former des disciples et servir la communauté.</p>
-                    <p style="margin-top: 20px;">✨ Étude biblique mercredi soir · Culte bilingue dimanche · Soin des personnes âgées · Accueil des étudiants</p>
+                    <p>Devenir un phare pour les fidèles chinois à Marseille : messe, catéchèse, partage biblique en chinois, en communion avec l'Église locale. Nous imitons la miséricorde du Christ et nous soutenons mutuellement dans la vie communautaire.</p>
+                    <p style="margin-top:20px;">✨ Messe en chinois chaque dimanche · catéchèse · pèlerinages · services caritatifs</p>
                 </div>
             </div>
             <div class="card">
-                <div class="card-title">
-                    <span class="icon">✝️</span>
-                    <span class="lang-zh-block">我们信</span>
-                    <span class="lang-fr-block" style="display: none;">Notre Foi</span>
-                </div>
+                <div class="card-title"><span class="icon">✝️</span> <span class="lang-zh-block">我们的信仰</span><span class="lang-fr-block" style="display: none;">Notre Foi</span></div>
                 <div class="lang-zh-block">
-                    <p>独一真神——圣父、圣子、圣灵三位一体；耶稣基督道成肉身，十架受死，第三日复活，将来必荣耀再临；我们相信圣经是神所默示的真理。</p>
+                    <p>我们信奉唯一的天主，三位一体。耶稣基督藉童贞玛利亚取得肉体。我们遵从教宗和主教，传承宗徒信经</p>
                 </div>
                 <div class="lang-fr-block" style="display: none;">
-                    <p>Nous croyons en un seul Dieu : Père, Fils et Saint-Esprit. En Jésus-Christ, fait homme, crucifié, ressuscité le troisième jour, et qui reviendra. La Bible est la Parole inspirée de Dieu.</p>
+                    <p>Nous croyons en un seul Dieu, Trinité. Jésus-Christ, vrai Dieu et vrai homme, né de la Vierge Marie. Nous suivons le Pape et les évêques, prions le Credo, et honorons la Mère de Dieu.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 事工介绍 - 三卡片，法中文对照显示 -->
-        <h2 style="font-size: 2rem; font-weight: 350; margin-top: 30px; color: #4a5a44; border-left: 8px solid #bbae8a; padding-left: 20px;">
-            <span class="lang-zh-block">团契事工</span>
-            <span class="lang-fr-block" style="display: none;">Ministères</span>
+        <!-- 团体生活：融合之前网站的活动（查经、爱心厨房、主日崇拜、诗班、青年团契等） -->
+        <h2 style="font-size:2rem; font-weight:350; margin:40px 0 20px; border-left:8px solid #a8bfc0; padding-left:20px; color:#1a5f6b;">
+            <span class="lang-zh-block">团体活动</span>
+            <span class="lang-fr-block" style="display: none;">Activités communautaires</span>
         </h2>
 
         <div class="grid-3">
-            <!-- 卡片 1 : 主日崇拜 -->
+            <!-- 主日崇拜（原网站） -->
             <div class="card">
-                <div class="card-title" style="font-size: 1.6rem;">🙌</div>
-                <h3 style="font-size: 1.6rem; font-weight: 350; margin-bottom: 15px; color: #5b6e4b;">
-                    <span class="lang-zh-block">主日崇拜</span>
-                    <span class="lang-fr-block" style="display: none;">Culte dominical</span>
-                </h3>
+                <div class="card-title">🙌</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">主日崇拜</span><span class="lang-fr-block" style="display: none;">Culte dominical</span></h3>
                 <div class="lang-zh-block">
                     <p>每周日 10:30 - 12:00<br>法语翻译 + 中文翻译<br>儿童主日学同步进行</p>
                 </div>
@@ -357,27 +336,21 @@
                     <p>Dimanche 10h30–12h00<br>Traduction français/chinois<br>École du dimanche pour enfants</p>
                 </div>
             </div>
-            <!-- 卡片 2 : 晚祷小组 -->
+            <!-- 查经小组（原网站） -->
             <div class="card">
-                <div class="card-title" style="font-size: 1.6rem;">📖</div>
-                <h3 style="font-size: 1.6rem; font-weight: 350; margin-bottom: 15px; color: #5b6e4b;">
-                    <span class="lang-zh-block">晚祷小组</span>
-                    <span class="lang-fr-block" style="display: none;">Groupe biblique</span>
-                </h3>
+                <div class="card-title">📖</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">查经小组</span><span class="lang-fr-block" style="display: none;">Groupe biblique</span></h3>
                 <div class="lang-zh-block">
-                    <p>每日 19:00 线上交替<br>深入圣经，彼此代祷，分享生活</p>
+                    <p>每天 19:00 线上/线下交替<br>深入圣经，彼此代祷，分享生活</p>
                 </div>
                 <div class="lang-fr-block" style="display: none;">
                     <p>Mercredi 19h00 (en ligne/présentiel)<br>Étude approfondie, prière et partage</p>
                 </div>
             </div>
-            <!-- 卡片 3 : 爱心餐车 -->
+            <!-- 爱心厨房（原网站） -->
             <div class="card">
-                <div class="card-title" style="font-size: 1.6rem;">🍞</div>
-                <h3 style="font-size: 1.6rem; font-weight: 350; margin-bottom: 15px; color: #5b6e4b;">
-                    <span class="lang-zh-block">爱心厨房</span>
-                    <span class="lang-fr-block" style="display: none;">Cuisine partagée</span>
-                </h3>
+                <div class="card-title">🍞</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">爱心厨房</span><span class="lang-fr-block" style="display: none;">Cuisine partagée</span></h3>
                 <div class="lang-zh-block">
                     <p>每月最后一周六 为无家可归者及留学生提供热餐。一起做饭，分享耶稣的爱。</p>
                 </div>
@@ -385,171 +358,162 @@
                     <p>Dernier samedi du mois : repas chaud pour sans-abris et étudiants. Cuisiner ensemble, partager l'amour de Jésus.</p>
                 </div>
             </div>
+            <!-- 祷告会（原网站） -->
+            <div class="card">
+                <div class="card-title">🕯️</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">祷告会</span><span class="lang-fr-block" style="display: none;">Prières</span></h3>
+                <div class="lang-zh-block">
+                    <p>周二 14:30 – 16:00<br>为教会、为世界和平祈祷</p>
+                </div>
+                <div class="lang-fr-block" style="display: none;">
+                    <p>Mar 14h30–16h00<br>Prières pour l'Église et la paix dans le monde</p>
+                </div>
+            </div>
+            <!-- 诗班排练（原网站） -->
+            <div class="card">
+                <div class="card-title">🎤</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">诗班排练</span><span class="lang-fr-block" style="display: none;">Chorale</span></h3>
+                <div class="lang-zh-block">
+                    <p>周六 15:00 – 17:00<br>学习圣乐，咏唱赞美</p>
+                </div>
+                <div class="lang-fr-block" style="display: none;">
+                    <p>Sam 15h00–17h00<br>Apprentissage de la musique sacrée, chants de louange</p>
+                </div>
+            </div>
+            <!-- 青年团契（原网站有提及） -->
+            <div class="card">
+                <div class="card-title">🧑‍🤝‍🧑</div>
+                <h3 style="color:#3c6e71;"><span class="lang-zh-block">青年团契</span><span class="lang-fr-block" style="display: none;">Groupe jeunes</span></h3>
+                <div class="lang-zh-block">
+                    <p>每周日晚 19:00<br>分享生活、信仰讨论、户外活动</p>
+                </div>
+                <div class="lang-fr-block" style="display: none;">
+                    <p>Dimanche soir 19h00<br>Partage de vie, discussions spirituelles, activités en plein air</p>
+                </div>
+            </div>
         </div>
 
-        <!-- 聚会时间 & 地址，双语完整显示 -->
-        <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px;">
-            <div class="card" style="flex: 2;">
-                <div class="card-title">
-                    <span>⏰</span>
-                    <span class="lang-zh-block">聚会时间表</span>
-                    <span class="lang-fr-block" style="display: none;">Horaires des rencontres</span>
-                </div>
+        <!-- 额外活动图标行（气氛） -->
+        <div class="activity-icons">
+            <span>⛪</span> <span>📿</span> <span>🕊️</span> <span>🍇</span> <span>🥖</span> <span>☕</span>
+        </div>
+
+        <!-- 聚会时间 & 地址（结合原网站时间表） -->
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px;">
+            <div class="card" style="flex:2;">
+                <div class="card-title"><span>⏰</span><span class="lang-zh-block">聚会时间表</span><span class="lang-fr-block" style="display: none;">Horaires</span></div>
                 <ul class="schedule-list">
-                    <!-- 中文时间 -->
+                    <!-- 中文时间：融合两者 -->
                     <li class="lang-zh-block"><span class="day">主日崇拜</span> <span>周日 10:30 – 12:00</span></li>
                     <li class="lang-zh-block"><span class="day">祷告会</span> <span>周二 14:30 – 16:00</span></li>
                     <li class="lang-zh-block"><span class="day">查经聚会</span> <span>周三 19:00 – 20:30</span></li>
                     <li class="lang-zh-block"><span class="day">诗班排练</span> <span>周六 15:00 – 17:00</span></li>
-                    <!-- 法语时间  (隐藏直到切换)-->
+                    <li class="lang-zh-block"><span class="day">青年团契</span> <span>周日 19:00 – 21:00</span></li>
+                    <li class="lang-zh-block"><span class="day">明供圣体</span> <span>首周五 20:00</span></li>
+                    <!-- 法语时间 -->
                     <li class="lang-fr-block" style="display: none;"><span class="day">Culte</span> <span>Dim 10h30–12h00</span></li>
                     <li class="lang-fr-block" style="display: none;"><span class="day">Prières</span> <span>Mar 14h30–16h00</span></li>
                     <li class="lang-fr-block" style="display: none;"><span class="day">Étude biblique</span> <span>Mer 19h00–20h30</span></li>
                     <li class="lang-fr-block" style="display: none;"><span class="day">Chorale</span> <span>Sam 15h00–17h00</span></li>
+                    <li class="lang-fr-block" style="display: none;"><span class="day">Jeunes</span> <span>Dim 19h00–21h00</span></li>
+                    <li class="lang-fr-block" style="display: none;"><span class="day">Adoration</span> <span>1er ven 20h00</span></li>
                 </ul>
-                <p style="margin-top: 20px; color: #5e6a52;">
-                    <span class="lang-zh-block">📍 聚会地址：马赛市第6区 圣心堂附属楼 2楼 Salle 6</span>
-                    <span class="lang-fr-block" style="display: none;">📍 Lieu : Bâtiment annexe, Église du Sacré-Cœur, 6e arr., Marseille, Salle 6</span>
+                <p style="margin-top:20px;">
+                    <span class="lang-zh-block">📍 地址：马赛第6区 圣心堂 (Église du Sacré-Cœur) 附属楼2楼 Salle 6</span>
+                    <span class="lang-fr-block" style="display: none;">📍 Adresse : Annexe de l'Église du Sacré-Cœur, 6e arr., Marseille, salle 6</span>
                 </p>
             </div>
-
-            <!-- 联络与代祷信息 -->
-            <div class="card" style="flex: 1.2;">
-                <div class="card-title">
-                    <span>✉️</span>
-                    <span class="lang-zh-block">联络我们</span>
-                    <span class="lang-fr-block" style="display: none;">Contact</span>
-                </div>
+            <div class="card" style="flex:1.2;">
+                <div class="card-title"><span>✉️</span> <span class="lang-zh-block">联络我们</span><span class="lang-fr-block" style="display: none;">Contact</span></div>
                 <div class="lang-zh-block">
-                    <p><strong>温神父</strong> 06 12 34 56 78</p>
-                    <p><strong>王姊妹</strong> (接待) 06 98 76 54 32</p>
-                    <p>Email: contact@eglisechinoise-marseille.fr</p>
+                    <p><strong>温神父</strong> 06 23 45 67 89</p>
+                    <p><strong>王姊妹 (接待)</strong> 06 98 76 54 32</p>
+                    <p>Email: lumiere.cote@catho-marseille.fr</p>
                 </div>
                 <div class="lang-fr-block" style="display: none;">
-                    <p><strong>Pasteur Lin</strong> 06 12 34 56 78</p>
+                    <p><strong>Père Li</strong> 06 23 45 67 89</p>
                     <p><strong>Sœur Chen</strong> (accueil) 06 98 76 54 32</p>
-                    <p>Email: contact@eglisechinoise-marseille.fr</p>
+                    <p>Email: lumiere.cote@catho-marseille.fr</p>
                 </div>
-                <hr style="margin: 25px 0; border: none; border-top: 1px solid #e2dacb;">
+                <hr style="margin:20px 0; border-color:#efebdd;">
                 <div class="lang-zh-block">
-                    <p style="font-weight: 600;">🌿 代祷请求 · 为法国宣教 · 为青年团契复兴</p>
+                    <p style="font-weight:600;">🌿 代祷请求 · 为法国宣教 · 为青年团契复兴</p>
                 </div>
                 <div class="lang-fr-block" style="display: none;">
-                    <p style="font-weight: 600;">🌿 Requêtes de prière : pour la mission en France, pour le renouveau des jeunes.</p>
+                    <p style="font-weight:600;">🌿 Intentions de prière : pour la mission en France, pour le renouveau des jeunes.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 特别欢迎语 / 双语邀请 -->
-        <div style="background: #e1dfd1; border-radius: 40px; padding: 35px; margin: 50px 0 20px; text-align: center; color: #3f4a37;">
-            <p style="font-size: 1.7rem; margin-bottom: 10px;">☧</p>
-            <span class="lang-zh-block" style="font-size: 1.6rem;">“凡劳苦担重担的人，可以到我这里来，我就使你们得安息。”</span>
-            <span class="lang-fr-block" style="display: none; font-size: 1.6rem;">« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. »</span>
+        <!-- 特别邀请 -->
+        <div style="background: #dfeae8; border-radius: 40px; padding: 35px; margin: 60px 0 20px; text-align: center;">
+            <p style="font-size: 2rem; margin-bottom: 10px;">🕯️ ⚓ 🕊️</p>
+            <span class="lang-zh-block" style="font-size: 1.6rem;">“海岸之光，照耀万民”</span>
+            <span class="lang-fr-block" style="display: none; font-size: 1.6rem;">« Lumière de la côte, éclaire tous les peuples. »</span>
             <p style="margin-top: 20px; font-size: 1.2rem;">
-                <span class="lang-zh-block">马赛华人教会欢迎您，无论您从哪里来。</span>
-                <span class="lang-fr-block" style="display: none;">La Communauté Chinoise de Marseille vous accueille, où que vous veniez.</span>
+                <span class="lang-zh-block">无论您来自何方，都欢迎您加入海岸之光大家庭。</span>
+                <span class="lang-fr-block" style="display: none;">Où que vous veniez, soyez les bienvenus dans la famille de la Lumière de la Côte.</span>
             </p>
         </div>
 
         <!-- 页脚 -->
         <div class="footer">
             <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                <span class="lang-zh-block">© 2025 马赛华人教会</span>
-                <span class="lang-fr-block" style="display: none;">© 2025 Communauté Chinoise de Marseille</span>
+                <span class="lang-zh-block">© 2025 马赛海岸之光 · 华人天主教团体</span>
+                <span class="lang-fr-block" style="display: none;">© 2025 Lumière de la Côte · Communauté catholique chinoise</span>
                 <span> | </span>
                 <span class="lang-zh-block">“爱人如己”</span>
                 <span class="lang-fr-block" style="display: none;">« Aimez-vous les uns les autres »</span>
             </div>
-            <p class="small-note" style="margin-top: 20px;">
-                <span class="lang-zh-block">每周日</span>
-                <span class="lang-fr-block" style="display: none;">Groupe jeunes chaque dimanche soir, bienvenue !</span>
+            <p class="small-note">
+                <span class="lang-zh-block">圣母护佑 · 马赛教区共融 · 每周日晚青年团契欢迎你</span>
+                <span class="lang-fr-block" style="display: none;">Sous la protection de Marie · en communion avec le diocèse de Marseille · Groupe jeunes chaque dimanche soir, bienvenue !</span>
             </p>
         </div>
     </div>
 
-    <!-- 双语切换JavaScript：处理中法显示，优雅切换 -->
+    <!-- 双语切换脚本（同前稳定版本） -->
     <script>
         (function() {
             const btnZh = document.getElementById('btn-zh');
             const btnFr = document.getElementById('btn-fr');
             const body = document.body;
 
-            // 激活中文显示：移除 show-fr 类，保证法语隐藏，中文显示
             function setChinese() {
                 body.classList.remove('show-fr');
                 btnZh.classList.add('active');
                 btnFr.classList.remove('active');
-                // 后备：所有lang-fr-block 内联style保留，但类控制优先级更高；同时处理内联style（更稳健）
-                document.querySelectorAll('.lang-fr-block, .lang-fr').forEach(el => {
-                    el.style.display = 'none';
-                });
-                document.querySelectorAll('.lang-zh-block, .lang-zh').forEach(el => {
-                    el.style.display = 'block'; // 对于块元素
-                });
-                // 特殊处理标题等inline元素
-                document.querySelectorAll('.lang-zh').forEach(el => {
-                    el.style.display = 'inline';
-                });
-                document.querySelectorAll('.church-name .lang-zh-block, .subhead .lang-zh-block').forEach(el => {
-                    el.style.display = 'block';
-                });
-                // 重置法语隐藏
+                document.querySelectorAll('.lang-fr-block, .lang-fr').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-zh-block, .lang-zh').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('.church-name .lang-zh-block, .subhead .lang-zh-block').forEach(el => el.style.display = 'block');
+                // 图像标题
+                document.querySelectorAll('.image-caption.lang-zh-block').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.image-caption.lang-fr-block').forEach(el => el.style.display = 'none');
             }
 
             function setFrench() {
                 body.classList.add('show-fr');
                 btnFr.classList.add('active');
                 btnZh.classList.remove('active');
-                // 显示法语块，隐藏中文块
-                document.querySelectorAll('.lang-fr-block').forEach(el => {
-                    el.style.display = 'block';
-                });
-                document.querySelectorAll('.lang-zh-block').forEach(el => {
-                    el.style.display = 'none';
-                });
-                // 对行内元素法语
-                document.querySelectorAll('.lang-fr').forEach(el => {
-                    el.style.display = 'inline';
-                });
-                document.querySelectorAll('.lang-zh').forEach(el => {
-                    el.style.display = 'none';
-                });
-                // 特殊照顾 church-name 内法语显示方式
+                document.querySelectorAll('.lang-fr-block').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.lang-zh-block').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-fr').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.image-caption.lang-fr-block').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.image-caption.lang-zh-block').forEach(el => el.style.display = 'none');
             }
 
-            // 初始化状态：中文显示，清理所有内联干扰
             window.onload = function() {
-                // 预先为每个双语块设置默认的display属性（基于初始中文）
-                // 首先将所有法语块隐藏，中文块显示，并且移除show-fr类
                 body.classList.remove('show-fr');
-                // 强制同步
                 setChinese();
             };
 
-            btnZh.addEventListener('click', function(e) {
-                e.preventDefault();
-                setChinese();
-            });
-
-            btnFr.addEventListener('click', function(e) {
-                e.preventDefault();
-                setFrench();
-            });
-
-            // 额外确保任何遗漏的行内元素
-            // 初始化调用一次
-            window.addEventListener('DOMContentLoaded', function() {
-                setChinese();
-            });
+            btnZh.addEventListener('click', function(e) { e.preventDefault(); setChinese(); });
+            btnFr.addEventListener('click', function(e) { e.preventDefault(); setFrench(); });
+            window.addEventListener('DOMContentLoaded', setChinese);
         })();
     </script>
-
-    <!-- 后备：确保法语初始隐藏（无样式干扰） -->
-    <noscript>
-        <style>
-            .lang-fr-block, .lang-fr { display: none; }
-            .lang-zh-block, .lang-zh { display: block; }
-        </style>
-    </noscript>
+    <noscript><style>.lang-fr-block,.lang-fr{display:none;}.lang-zh-block,.lang-zh{display:block;}</style></noscript>
 </body>
 </html>
